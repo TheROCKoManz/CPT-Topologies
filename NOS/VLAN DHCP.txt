@@ -1,0 +1,33 @@
+VLAN DHCP
+
+
+Multi Switch - 
+
+VLAN X (X=1,2,3...)
+int range fa0/y-z
+
+switchport trunk encapsulation dot1q
+switchport mode trunk
+
+int vlan X
+ip address 192.168.X.1 255.255.255.0
+no sh
+exit
+
+int vlan X
+ip helper-address 192.168.1.2
+exit
+
+
+
+
+SWITCH X -
+
+vlan X
+int range fa0/y-z
+switchport mode access
+switchport access vlan X
+exit
+do wr
+exit
+
